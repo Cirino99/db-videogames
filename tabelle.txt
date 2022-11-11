@@ -1,0 +1,77 @@
+Videogame
+-) id: PK
+-) nome: varchar(255)
+-) trama: text
+-) data_rilascio: date
+
+Software_House
+-) id: PK
+-) nome: varchar(255)
+-) partita_iva: char(11)
+-) città: varchar(255)
+-) nazione: varchar(255)
+
+Videogame_Software_House
+-) id_videogame: FK
+-) id_software_house: FK
+
+Piattaforma
+-) id: PK
+-) nome: varchar(255)
+
+Videogame_Piattaforma
+-) id_videogame: FK
+-) id_piattaforma: FK
+
+Genere
+-) id: PK
+-) nome: varchar(255)
+
+Videogame_Genere
+-) id_videogame: FK
+-) id_genere: FK
+
+Classificazione_pegi
+-) id: PK
+-) nome: varchar(255)
+
+Videogame_Classificazione_pegi
+-) id_videogame: FK
+-) id_classificazione_pegi: FK
+
+Torneo
+-) id: PK
+-) nome: varchar(255)
+-) anno: year
+-) città: varchar(255)
+
+Videogame_Torneo
+-) id_videogame: FK
+-) id_torneo: FK
+
+Giocatore
+-) id: PK
+-) nome: varchar(255)
+-) cognome: varchar(255)
+-) nik: varchar(255)
+-) città: varchar(255)
+
+Giocatore_Torneo
+-) id_giocatore: FK
+-) id_torneo: FK
+
+Recensione
+-) id_videogame: FK
+-) id_giocatore: FK
+-) titolo: varchar(255)
+-) testo: text
+-) voto: char(1)
+
+Premi
+-) id: PK
+-) nome: varchar(255)
+
+Premi_Videogame
+-) id_premio: FK
+-) id_videogame: FK
+-) anno: year
