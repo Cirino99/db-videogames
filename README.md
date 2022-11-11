@@ -1,6 +1,6 @@
 # db-videogames
 
-##Consegna
+## Consegna
 Creare lo schema e-r con tutte le entità necessarie a gestire le informazioni di un archivio di E-sports.
 Ciascun videogame ha un nome, una trama, una data di rilascio ed è prodotto da una software house, la quale, a sua volta, è identificata da un nome, una partita iva, città e nazione.
 I videogames possono essere disponibili su diverse piattaforme (PlayStation 4, PlayStation 5, XBox One, XBox Serie X, Windows, Nintendo Switch, Google Stadia, ...) e hanno diverse categorie (avventura, strategia, RPG, sparatutto, calcio, ...) e classificazioni PEGI (PEGI 7, PEGI 12, PEGI 18, Violenza, Paura, Gioco d’azzardo, ...)
