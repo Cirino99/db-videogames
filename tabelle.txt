@@ -65,7 +65,7 @@ Recensione
 -) id_giocatore: FK
 -) titolo: varchar(255)
 -) testo: text
--) voto: char(1)
+-) voto: int(1)
 
 Premi
 -) id: PK
