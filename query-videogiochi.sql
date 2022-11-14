@@ -44,7 +44,7 @@
 --9- Selezionare tutti i dati dei videogiochi rilasciati nell'anno 2020 (46)
 --SELECT *
 --FROM videogames
---WHERE release_date >= '01/01/2020' AND release_date <= '31/12/2020'
+--WHERE release_date >= '01/01/2020' AND release_date <= '31/12/2020';
 
 --10- Selezionare gli id dei videogame che hanno ricevuto almeno una recensione da 5 stelle, mostrandoli una sola volta (443)
 --SELECT videogame_id
@@ -55,8 +55,15 @@
 --*********** BONUS ***********
 
 --11- Selezionare il numero e la media delle recensioni per il videogioco con ID = 412 (review number = 12, avg_rating = 3)
+--SELECT count(*) as [review number], avg(rating) as [avg rating]
+--FROM reviews
+--WHERE videogame_id = 412
+--GROUP BY videogame_id;
 
---12- Selezionare il numero di videogame che la software house con ID = 1 ha rilasciato nel 2018 (13
+--12- Selezionare il numero di videogame che la software house con ID = 1 ha rilasciato nel 2018 (13)
+--SELECT count(*) as [number videovame]
+--FROM videogames
+--WHERE software_house_id = 1 AND release_date >= '01/01/2018' AND release_date <= '31/12/2018';
 
 
 --QUERY CON GROUPBY
