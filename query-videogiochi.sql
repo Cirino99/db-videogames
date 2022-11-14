@@ -31,10 +31,9 @@
 --WHERE description LIKE '%facere%';
 
 --7- Selezionare tutti i videogame che hanno la categoria 2 (FPS) o 6 (RPG), mostrandoli una sola volta (del videogioco vogliamo solo l'ID) (287)
---SELECT videogame_id
+--SELECT DISTINCT videogame_id
 --FROM category_videogame
---WHERE category_id = 2 OR category_id = 6
---GROUP BY videogame_id;
+--WHERE category_id = 2 OR category_id = 6;
 
 --8- Selezionare tutte le recensioni con voto compreso tra 2 e 4 (2947)
 --SELECT *
@@ -47,10 +46,9 @@
 --WHERE release_date >= '01/01/2020' AND release_date <= '31/12/2020';
 
 --10- Selezionare gli id dei videogame che hanno ricevuto almeno una recensione da 5 stelle, mostrandoli una sola volta (443)
---SELECT videogame_id
+--SELECT DISTINCT videogame_id
 --FROM reviews
---WHERE rating = 5
---GROUP BY videogame_id;
+--WHERE rating = 5;
 
 --*********** BONUS ***********
 
@@ -207,9 +205,39 @@
 --*********** BONUS ***********
 
 --10- Selezionare i dati della prima software house che ha rilasciato un gioco, assieme ai dati del gioco stesso (software house id : 5)
+--SELECT TOP 1 software_houses.id, software_houses.name, videogames.id, videogames.name, videogames.release_date
+--FROM software_houses
+--INNER JOIN videogames
+--ON software_houses.id = videogames.software_house_id
+--ORDER BY videogames.release_date ASC;
 
 --11- Selezionare i dati del videogame (id, name, release_date, totale recensioni) con più recensioni (videogame id : 398)
+--SELECT TOP 1 videogames.id, videogames.name, videogames.release_date, count(*) as [number_review]
+--FROM videogames
+--INNER JOIN reviews
+--ON videogames.id = reviews.videogame_id
+--GROUP BY videogames.id, videogames.name, videogames.release_date
+--ORDER BY number_review DESC;
 
 --12- Selezionare la software house che ha vinto più premi tra il 2015 e il 2016 (software house id : 1)
+--SELECT TOP 1 software_houses.id, software_houses.name, count(*) as [number_awards]
+--FROM software_houses
+--INNER JOIN videogames
+--ON software_houses.id = videogames.software_house_id
+--INNER JOIN award_videogame
+--ON videogames.id = award_videogame.videogame_id
+--WHERE award_videogame.year >= '2015' AND award_videogame.year <= '2016'
+--GROUP BY software_houses.id, software_houses.name
+--ORDER BY number_awards DESC;
 
 --13- Selezionare le categorie dei videogame i quali hanno una media recensioni inferiore a 1.5 (10)
+--SELECT categories.id, categories.name, avg(reviews.rating) as [avg_reviews]
+--FROM categories
+--INNER JOIN category_videogame
+--ON categories.id = category_videogame.category_id
+--INNER JOIN videogames
+--ON category_videogame.videogame_id = videogames.id
+--INNER JOIN reviews
+--ON videogames.id = reviews.videogame_id
+--GROUP BY categories.id, categories.name
+--ORDER BY avg_reviews ASC;
