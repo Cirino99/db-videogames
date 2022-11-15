@@ -230,8 +230,8 @@
 --GROUP BY software_houses.id, software_houses.name
 --ORDER BY number_awards DESC;
 
---13- Selezionare le categorie dei videogame i quali hanno una media recensioni inferiore a 1.5 (10)
---SELECT categories.id, categories.name, avg(reviews.rating) as [avg_reviews]
+----13- Selezionare le categorie dei videogame i quali hanno una media recensioni inferiore a 1.5 (10)
+--SELECT categories.id, categories.name, avg(cast(reviews.rating as decimal)) as [avg_reviews]
 --FROM categories
 --INNER JOIN category_videogame
 --ON categories.id = category_videogame.category_id
@@ -239,5 +239,6 @@
 --ON category_videogame.videogame_id = videogames.id
 --INNER JOIN reviews
 --ON videogames.id = reviews.videogame_id
---GROUP BY categories.id, categories.name
+--GROUP BY categories.id, categories.name, videogames.id
+--HAVING avg(cast(reviews.rating as decimal)) < 1.5
 --ORDER BY avg_reviews ASC;
